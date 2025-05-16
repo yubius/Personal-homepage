@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>世界帅哥排行榜</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
         body {
             margin: 0;
@@ -69,15 +70,37 @@
             border: 2px solid #0078d7;
             background: #eee;
         }
+        /* 响应式适配手机端 */
+        @media (max-width: 600px) {
+            .header {
+                font-size: 1.5rem;
+                padding: 20px 0 10px 0;
+            }
+            .main-img img {
+                width: 90vw;
+                max-width: 95vw;
+                height: 45vw;
+                max-height: 60vw;
+            }
+            .ranking-table {
+                width: 98vw;
+                max-width: 100vw;
+                margin: 0 auto 20px auto;
+                border-radius: 8px;
+            }
+            th, td {
+                padding: 8px 2px;
+                font-size: 0.95rem;
+            }
+            .avatar {
+                width: 40px;
+                height: 40px;
+            }
+        }
     </style>
     <script>
-        // 自动设置必应每日壁纸为背景
-        fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
-            .then(res => res.json())
-            .then(data => {
-                const imgUrl = 'https://www.bing.com' + data.images[0].url;
-                document.body.style.backgroundImage = `url('${imgUrl}')`;
-            });
+        // 使用国内可用的必应每日壁纸API，提升中国大陆加载速度
+        document.body.style.backgroundImage = "url('https://bing.img.run/rand.php')";
     </script>
 </head>
 <body>
