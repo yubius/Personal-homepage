@@ -74,6 +74,52 @@
             border-radius: 50%;
             border: 2px solid #0078d7;
             background: #eee;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .avatar:hover {
+            box-shadow: 0 0 0 4px #0078d7aa;
+        }
+        /* 放大图片弹窗样式 */
+        .img-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .img-modal.active {
+            display: flex;
+        }
+        .img-modal img {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            background: #fff;
+        }
+        .img-modal .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2.5rem;
+            color: #fff;
+            background: rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .img-modal .close-btn:hover {
+            background: rgba(0,0,0,0.6);
         }
         /* 响应式适配手机端 */
         @media (max-width: 600px) {
@@ -144,6 +190,46 @@
                 const imgUrl = 'https://cn.bing.com' + data.images[0].url;
                 document.body.style.backgroundImage = `url('${imgUrl}')`;
             });
+        // 选手照片放大功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.createElement('div');
+            modal.className = 'img-modal';
+            modal.innerHTML = `
+                <button class="close-btn" title="关闭">×</button>
+                <img src="" alt="放大照片">
+            `;
+            document.body.appendChild(modal);
+            const modalImg = modal.querySelector('img');
+            const closeBtn = modal.querySelector('.close-btn');
+            // 选手头像
+            document.querySelectorAll('.avatar').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                    modal.classList.add('active');
+                });
+            });
+            // 大图
+            const mainImg = document.querySelector('.main-img img');
+            if (mainImg) {
+                mainImg.style.cursor = 'pointer';
+                mainImg.addEventListener('click', function() {
+                    modalImg.src = mainImg.src;
+                    modalImg.alt = mainImg.alt;
+                    modal.classList.add('active');
+                });
+            }
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+                modalImg.src = '';
+            });
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    modalImg.src = '';
+                }
+            });
+        });
     </script>
 </head>
 <body>
