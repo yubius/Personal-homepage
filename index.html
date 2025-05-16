@@ -1,123 +1,134 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-cn">
 <head>
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Dmego Home">
-    <meta name="keywords" content="Dmego,Homepage">
-    <meta name="author" content="Dmego">
-    <title>鱼布斯的主页|共建美好</title>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/onlinewebfonts.css"/>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/vno.css">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css">
-    <link rel="apple-touch-icon" href="https://unpkg.com/dmego-home-page@latest/apple-touch-icon.png">
-    <link rel="icon" href="https://img.picui.cn/free/2025/05/10/681eb4c8eb757.jpg">
+    <meta charset="UTF-8">
+    <title>世界帅哥排行榜</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        .header {
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            text-align: center;
+            padding: 32px 0 16px 0;
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            font-weight: bold;
+        }
+        .main-img {
+            display: flex;
+            justify-content: center;
+            margin: 32px 0 24px 0;
+        }
+        .main-img img {
+            width: 320px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+            border: 4px solid #fff;
+            background: #eee;
+        }
+        .ranking-table {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            background: rgba(255,255,255,0.92);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 16px 8px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        th {
+            background: #0078d7;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background: #f3f7fa;
+        }
+        .avatar {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #0078d7;
+            background: #eee;
+        }
+    </style>
+    <script>
+        // 自动设置必应每日壁纸为背景
+        fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
+            .then(res => res.json())
+            .then(data => {
+                const imgUrl = 'https://www.bing.com' + data.images[0].url;
+                document.body.style.backgroundImage = `url('${imgUrl}')`;
+            });
+    </script>
 </head>
-<link rel="stylesheet" href="./assets/css/iconfont.css">
-
 <body>
-    <span class="mobile btn-mobile-menu">
-        <i class="social iconfont icon-list btn-mobile-menu__icon"></i>
-        <i class="social iconfont icon-angleup btn-mobile-close__icon hidden"></i>
-    </span>
-    <header id="panel" class="panel-cover">
-        <div class="panel-main">
-            <div class="panel-main__inner panel-inverted">
-                <div class="panel-main__content">
-                    <div class="ih-item circle effect right_to_left">            
-                        <a href="#" title="" class="blog-button">
-                            <div class="img"><img src="
-                                https://img.picui.cn/free/2025/05/10/681eb4c8eb757.jpg" alt="img" class="js-avatar iUp profilepic"></div>
-                            <div class="info iUp">
-                                <div class="info-back">
-                                    <h2> 
-                                        
-                                         Progress
-                                        
-                                    </h2>
-                                    <p>
-                                        
-                                            2025 · 無限進步
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <h1 class="panel-cover__title panel-title iUp">
-                        <a href="#" title="Dmego Home">Yubius</a>
-                    </h1>
-                    <p class="panel-cover__subtitle panel-subtitle iUp">共建美好</p>
-                    <hr class="panel-cover__divider iUp" />
-                    <p id="description" class="panel-cover__description iUp">如何得与凉风约, 不共尘沙一并来!
-                        <br/>
-                        <strong>-「中牟道中」</strong>
-                    </p>
-                    <div class="navigation-wrapper iUp">
-                        <div>
-                            <nav class="cover-navigation cover-navigation--primary">
-                                <ul class="navigation__item">
-                                        <a href="./web/start.html" class="blog-button" target="_blank">布斯起始页</a>
-                                <ul class="navigation__item">
-                                            <a href="./web/bilibili.html" class="blog-button" target="_blank">我的Bilibili</a>
-                                <ul class="navigation__item">
-                                                <a href="./web/windows12.html" class="blog-button" target="_blank">Windows12</a>
-                                                            
-                                    <li class="navigation__item">
-                                        <a href="./web/bmi.html" class="blog-button" target="_blank">BMI 计算器</a>
-                                     </li><li class="navigation__item">
-                                     <a href="./web/QQpd.html" class="blog-button" target="_blank">我的QQ频道</a>
-                                </li></ul>
-                            </nav>
-                        </div>
-                        <div class="iUp">
-                            <nav class="cover-navigation navigation--social">
-                                <ul class="navigation">
-                                    <li class="navigation__item">
-                                        <a href="./web/mygithub.html" title="github" target="_blank">
-                                            <i class='social iconfont icon-github'></i>
-                                            <span class="label">github</span>
-                                        </a>
-                                    </li>
-
-
-                                    <li class="navigation__item">
-                                        <a href="./web/zhihu.html" title="zhihu" target="_blank">
-                                            <i class='social iconfont icon-zhihu'></i>
-                                            <span class="label">zhihu</span>
-                                        </a>
-                                    </li>
-                                    <li class="navigation__item">
-                                        <!-- 加密的邮箱地址, 请自行修改, 或者改用下方的明文方式 -->
-                                        <a href="./web/mail.html" title="email">
-                                        <!-- <a href="test@test.com" title="email"> -->
-                                            <i class='social iconfont icon-email'></i>
-                                            <span class="label">email</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-cover--overlay cover-slate"></div>
-        </div>
-        <!-- <div class="beian iUp">
-            <a class="icp" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">XXX</a>
-            <a class="gwab" href="http://www.beian.gov.cn/portal/recordQuery" target="_blank">XXX</a>
-        </div> -->
-        <div class="remark iUp">
-            <p class="power">One more thing 
-                <a href="./web/bilibili.html" target="_blank"> 我的哔哩哔哩 </a> And 
-                <a href="./web/start.html" target="_blank"> 布斯起始页 </a>
-            </p>
-        </div>
-    </header>
-    <script type="text/javascript" src="https://unpkg.com/dmego-home-page@latest/assets/js/main.js"></script>
-    <script type="text/javascript" src="./assets/json/images.json?cb=getBingImages"></script>
+    <div class="header">世界帅哥排行榜</div>
+    <div class="main-img">
+        <!-- 帅哥大图，替换 src 链接即可 -->
+        <img src="https://placehold.co/320x400?text=帅哥" alt="帅哥大图">
+    </div>
+    <div class="ranking-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>名字</th>
+                    <th>照片</th>
+                    <th>评分</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>张三</td>
+                    <td><img class="avatar" src="https://placehold.co/60x60?text=1" alt="张三"></td>
+                    <td>99.9</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>李四</td>
+                    <td><img class="avatar" src="https://placehold.co/60x60?text=2" alt="李四"></td>
+                    <td>98.7</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>王五</td>
+                    <td><img class="avatar" src="https://placehold.co/60x60?text=3" alt="王五"></td>
+                    <td>97.5</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>赵六</td>
+                    <td><img class="avatar" src="https://placehold.co/60x60?text=4" alt="赵六"></td>
+                    <td>96.3</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>小明</td>
+                    <td><img class="avatar" src="https://placehold.co/60x60?text=5" alt="小明"></td>
+                    <td>95.0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
