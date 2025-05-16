@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>世界帅哥排行榜</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="https://img.icons8.com/ios-filled/50/000000/crown.png" type="image/png">
     <style>
         body {
             margin: 0;
@@ -13,6 +14,7 @@
             background-position: center;
             background-repeat: no-repeat;
             font-family: 'Segoe UI', 'Arial', sans-serif;
+            background-image: url('https://api.dujin.org/bing/1920.php');
         }
         .header {
             background: rgba(0,0,0,0.6);
@@ -29,13 +31,16 @@
             margin: 32px 0 24px 0;
         }
         .main-img img {
-            width: 320px;
-            height: 400px;
-            object-fit: cover;
+            width: 90vw;
+            max-width: 600px;
+            height: auto;
+            aspect-ratio: 1284/953;
+            object-fit: contain;
             border-radius: 16px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.3);
             border: 4px solid #fff;
             background: #eee;
+            display: block;
         }
         .ranking-table {
             width: 90%;
@@ -77,10 +82,10 @@
                 padding: 20px 0 10px 0;
             }
             .main-img img {
-                width: 90vw;
-                max-width: 95vw;
-                height: 45vw;
-                max-height: 60vw;
+                width: 98vw;
+                max-width: 98vw;
+                height: auto;
+                aspect-ratio: 1284/953;
             }
             .ranking-table {
                 width: 98vw;
@@ -97,17 +102,55 @@
                 height: 40px;
             }
         }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-image: url('https://api.dujin.org/bing/1920.php');
+                /* 可选：加深遮罩提升可读性 */
+            }
+            .ranking-table {
+                background: rgba(30, 30, 30, 0.92);
+                color: #fff;
+            }
+            th {
+                background: #222e3c;
+                color: #fff;
+            }
+            tr:nth-child(even) {
+                background: #23272e;
+            }
+        }
+        @media (prefers-color-scheme: light) {
+            body {
+                background-image: url('https://api.dujin.org/bing/1920.php');
+            }
+            .ranking-table {
+                background: rgba(255,255,255,0.92);
+                color: #222;
+            }
+            th {
+                background: #0078d7;
+                color: #fff;
+            }
+            tr:nth-child(even) {
+                background: #f3f7fa;
+            }
+        }
     </style>
     <script>
-        // 使用国内可用的必应每日壁纸API，提升中国大陆加载速度
-        document.body.style.backgroundImage = "url('https://bing.img.run/rand.php')";
+        // 采用 https://cn.bing.com 官方API，拼接图片地址，兼容中国大陆
+        fetch('https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
+            .then(res => res.json())
+            .then(data => {
+                const imgUrl = 'https://cn.bing.com' + data.images[0].url;
+                document.body.style.backgroundImage = `url('${imgUrl}')`;
+            });
     </script>
 </head>
 <body>
     <div class="header">世界帅哥排行榜</div>
     <div class="main-img">
         <!-- 帅哥大图，替换 src 链接即可 -->
-        <img src="https://placehold.co/320x400?text=帅哥" alt="帅哥大图">
+        <img src="https://img.picui.cn/free/2025/05/17/6827659853ed3.png" alt="帅哥大图">
     </div>
     <div class="ranking-table">
         <table>
@@ -122,33 +165,33 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>张三</td>
-                    <td><img class="avatar" src="https://placehold.co/60x60?text=1" alt="张三"></td>
+                    <td>高家俊</td>
+                    <td><img class="avatar" src="https://img.picui.cn/free/2025/05/17/682763625d8ed.jpg" alt="高家俊"></td>
                     <td>99.9</td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>李四</td>
-                    <td><img class="avatar" src="https://placehold.co/60x60?text=2" alt="李四"></td>
+                    <td>余雨轩</td>
+                    <td><img class="avatar" src="https://img.picui.cn/free/2025/05/17/682762b32cdc7.png" alt="余雨轩"></td>
                     <td>98.7</td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>王五</td>
-                    <td><img class="avatar" src="https://placehold.co/60x60?text=3" alt="王五"></td>
-                    <td>97.5</td>
+                    <td>田一鸣</td>
+                    <td><img class="avatar" src="https://th.bing.com/th/id/R.dd2fccfac2a337e4c5bec284e32080a8?rik=QoV9LiAfEQHRpg&riu=http%3a%2f%2fi2.hdslb.com%2fbfs%2farchive%2fa23a44759c2dd0c0640170d67dd1a77bc1d434a0.jpg&ehk=lFULaseOfGyLNP91XwKqRDKUDIjhBF733BKHmr7RJ70%3d&risl=&pid=ImgRaw&r=0" alt="田一鸣"></td>
+                    <td>77.5</td>
                 </tr>
                 <tr>
                     <td>4</td>
-                    <td>赵六</td>
-                    <td><img class="avatar" src="https://placehold.co/60x60?text=4" alt="赵六"></td>
-                    <td>96.3</td>
+                    <td>余书哲</td>
+                    <td><img class="avatar" src="https://img.picui.cn/free/2025/05/17/682762eb9a427.jpg" alt="余书哲"></td>
+                    <td>66.3</td>
                 </tr>
                 <tr>
                     <td>5</td>
-                    <td>小明</td>
-                    <td><img class="avatar" src="https://placehold.co/60x60?text=5" alt="小明"></td>
-                    <td>95.0</td>
+                    <td>丁真珍珠</td>
+                    <td><img class="avatar" src="https://n.sinaimg.cn/sinakd20122/585/w970h1215/20201227/e291-kfxsuvw2781900.jpg" alt="丁真珍珠"></td>
+                    <td>55.0</td>
                 </tr>
             </tbody>
         </table>
