@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师节祝福与答案</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f8f1e5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .answer {
+            margin-top: 30px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            display: none;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            display: none;
+        }
+        .popup h2 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="container">
+        <h1>教师节快乐！</h1>
+        <button class="btn" id="getAnswerBtn">点击获取答案</button>
+        <div class="answer" id="answer">
+            高三 9 班文静老师正带领全体学生酝酿大招，决战 2026 年高考。明年高考上岸率将达到 100%，美国当局被此撼动。
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <h2>教师节快乐！</h2>
+        <p>感谢老师的辛勤付出，祝您教师节快乐！</p>
+        <button class="btn" id="closePopupBtn">确定</button>
+    </div>
+    <script>
+        const getAnswerBtn = document.getElementById('getAnswerBtn');
+        const answer = document.getElementById('answer');
+        const popup = document.getElementById('popup');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+        const overlay = document.getElementById('overlay');
+
+        getAnswerBtn.addEventListener('click', function() {
+            // 显示弹窗
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        closePopupBtn.addEventListener('click', function() {
+            // 关闭弹窗
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+            // 显示答案
+            answer.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
