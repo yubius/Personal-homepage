@@ -1,51 +1,83 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>教师节祝福与答案</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>教师节祝福</title>
     <style>
-        body {
-            font-family: "Microsoft YaHei", sans-serif;
-            background-color: #f8f1e5;
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            /* 背景图 - 替换为你的图床链接 */
+            background-image: url("https://img.cdn1.vip/i/68c05e5a2d9c8_1757437530.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 背景模糊与遮罩 */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            backdrop-filter: blur(4px);
+            z-index: 1;
         }
         .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
             max-width: 500px;
-            width: 90%;
+            text-align: center;
+            z-index: 2;
         }
         h1 {
-            color: #e67e22;
+            font-size: 2.2rem;
             margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
         }
         .btn {
-            background-color: #3498db;
-            color: white;
+            background: rgba(255,255,255,0.9);
+            color: #222;
             border: none;
-            padding: 12px 25px;
+            padding: 14px 28px;
             font-size: 16px;
-            border-radius: 6px;
+            font-weight: bold;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin-top: 10px;
         }
         .btn:hover {
-            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
         }
         .answer {
-            margin-top: 30px;
+            margin-top: 25px;
             font-size: 18px;
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.7;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.25);
             display: none;
         }
         .popup {
@@ -53,24 +85,31 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 35px 25px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
             z-index: 999;
             display: none;
+            color: #333;
+            text-align: center;
         }
         .popup h2 {
-            color: #e74c3c;
-            margin-top: 0;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #d35400;
+        }
+        .popup p {
+            font-size: 16px;
+            margin-bottom: 25px;
         }
         .overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            inset: 0;
+            background: rgba(0,0,0,0.55);
             z-index: 998;
             display: none;
         }
@@ -79,15 +118,18 @@
 <body>
     <div class="overlay" id="overlay"></div>
     <div class="container">
-        <h1>教师节快乐！</h1>
-        <button class="btn" id="getAnswerBtn">点击获取答案</button>
-        <div class="answer" id="answer">
-            高三 9 班文静老师正带领全体学生酝酿大招，决战 2026 年高考。明年高考上岸率将达到 100%，美国当局被此撼动。
+        <h1>教师节快乐</h1>
+        <div class="card">
+            <button class="btn" id="getAnswerBtn">点击获取答案</button>
+            <div class="answer" id="answer">
+                高三 9 班文静老师正带领全体学生酝酿大招，决战 2026 年高考。<br>
+                明年高考上岸率将达到 100%，美国当局被此撼动。
+            </div>
         </div>
     </div>
     <div class="popup" id="popup">
         <h2>教师节快乐！</h2>
-        <p>感谢老师的辛勤付出，祝您教师节快乐！</p>
+        <p>感谢老师的辛勤付出，祝您节日快乐、桃李满天下！</p>
         <button class="btn" id="closePopupBtn">确定</button>
     </div>
     <script>
@@ -97,17 +139,14 @@
         const closePopupBtn = document.getElementById('closePopupBtn');
         const overlay = document.getElementById('overlay');
 
-        getAnswerBtn.addEventListener('click', function() {
-            // 显示弹窗
+        getAnswerBtn.addEventListener('click', () => {
             popup.style.display = 'block';
             overlay.style.display = 'block';
         });
 
-        closePopupBtn.addEventListener('click', function() {
-            // 关闭弹窗
+        closePopupBtn.addEventListener('click', () => {
             popup.style.display = 'none';
             overlay.style.display = 'none';
-            // 显示答案
             answer.style.display = 'block';
         });
     </script>
